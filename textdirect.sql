@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2020 at 02:24 PM
+-- Generation Time: May 25, 2020 at 01:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -63,11 +63,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`idUsers`, `username`, `email`, `password`, `last_login`, `activity`, `time_sending_msg`) VALUES
+(3, 'filip.lozo', 'filip.lozo@yahoo.com', 'volimphp', '2020-05-20 13:17:36', 'y', '2020-05-25 13:17:36');
+
+--
 -- Indexes for dumped tables
 --
-INSERT INTO `users` (`idUsers`, `username`, `email`, `password`, `last_login`, `activity`, `time_sending_msg`) VALUES
-(1, 'Filip', 'filip.lozo@yahoo.com', 'fee2c775c18a12b7b52b58129b00e1bd', '2020-05-12 14:41:44', 'n', timestamp()),
-(2, 'Mihaela', 'mihaelatikvicki@yahoo.com', 'e99a18c428cb38d5f260853678922e03', '2020-05-12 15:09:26', 'n', timestamp());
+
 --
 -- Indexes for table `chatbox`
 --
@@ -106,7 +111,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

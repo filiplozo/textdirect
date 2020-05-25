@@ -3,9 +3,12 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$db = "schema";
+$db= "textdirect";
 
-$connection = mysqli_connect("$host", "$username", "$password") or die(mysqli_error());
-mysqli_select_db("$db",$connection) or die(mysqli_error());
+$conn = new mysqli($host, $username, $password);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 ?>
