@@ -22,9 +22,9 @@ if(isset($_POST['email'])) {
                 $_SESSION['pass'] = $pass;
                 $_SESSION['id'] = $id;
 
-                mysqli_query($connection, "UPDATE users SET activity='y', last_login=now() WHERE email = '$email' AND password = '$pass' LIMIT 1")or die(mysqli_error());
-                header("Location: index.php");
-                exit();
+                mysqli_query($connection, "UPDATE users SET activity='1' WHERE email = '$email' AND password = '$pass' LIMIT 1")or die(mysqli_error());
+             header("Location: index.php");
+               exit();
             }
 
         }else {

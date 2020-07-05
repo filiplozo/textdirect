@@ -6,10 +6,10 @@ if (isset($_SESSION['id'])) {
 
     $id = preg_replace('#[^0-9]#i', '', $_SESSION['id']);
     $connection = mysqli_connect($host , $username , $password , $db);
-    $sql = mysqli_query($connection ,"SELECT username FROM users WHERE idUsers='$id'");
+    $sql = mysqli_query($connection ,"SELECT username FROM users WHERE id='$id'");
     $num_rows = mysqli_num_rows($sql);
     if ($num_rows > 0) {
-        $sqlLog = mysqli_query($connection ,"UPDATE users SET activity='y' WHERE idUsers='$id'") or die(mysqli_error()); //confirming that a user is in the chat
+        $sqlLog = mysqli_query($connection ,"UPDATE users SET activity='1' WHERE id='$id'") or die(mysqli_error()); //confirming that a user is in the chat
         while ($row = mysqli_fetch_array($sql)) {
             $username = $row['username'];
             $welcome = "Hello $username"; //message says hello to the user
@@ -25,11 +25,7 @@ if (isset($_SESSION['id'])) {
 <head>
     <meta charset="utf-8">
     <title>TextDirect</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src=""></script>
-    <script type="text/javascript">view_count();</script>
+
     <style type="text/css">
         body{
             background:moccasin;
@@ -60,9 +56,6 @@ if (isset($_SESSION['id'])) {
         #status{
             color:green;
         }
-        #wlc{
-            color:red;
-        }
 
         #chatButton{
             float:left;
@@ -73,22 +66,19 @@ if (isset($_SESSION['id'])) {
 
     </style>
 </head>
-<body>
-<h2 id="wlc"></h2>
+
+<body onLoad='window.setTimeout("view_count()",2000);'>
+
 <div id="nu"></div>
-<p>
-    <a href="logout.php" class="btn btn-info btn-lg">
-        <span class="glyphicon glyphicon-log-out"></span> Log out
-    </a>
-</p>
-<br>
+<a href="logout.php">Log out</a>
 <div id="viewChats"></div>
 <br>
 <input type="text" name="chat" id="chat" size="48">
-<input type="submit" value="Send" id="chatButton">
-
+<input type="image" id="chatButton" src="104603_send-button-png.jpg" width="67" height="51" onClick="post_chat();">
 <div id="status"></div>
-
+<script type="text/javascript" src="chat.js"></script>
+<script type="text/javascript">view_count();</script>
+<script type="text/javascript">list_chats();</script>
 
 </body>
 </html>
